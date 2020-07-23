@@ -1,3 +1,10 @@
+<#
+    Filename: Get-CWComputerInfo.ps1
+    Author: Cole Lavallee
+    Date:   23 July 2020
+    Version: 1.0
+#>
+
 function Get-CWComputerInfo {    
     [CmdletBinding()]
     param (
@@ -12,12 +19,15 @@ function Get-CWComputerInfo {
         Write-Warning "Required modules not installed, installing..."
         Install-Module AutomateAPI, PSSharedGoods
     }
-    try {
-        Connect-AutomateAPI -Server $AutomateServer
-    }
-    catch {
-        Write-Error "Failed to connect to automate server, check credentials..."
-    }
+    # try {
+
+    # }
+    # try {
+    #     Connect-AutomateAPI -Server $AutomateServer
+    # }
+    # catch {
+    #     Write-Error "Failed to connect to automate server, check credentials..."
+    # }
 
     $Computers = Get-AutomateComputer -ClientName $ClientName | Where-Object { $_.Type -eq "Workstation" }
     
