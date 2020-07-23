@@ -12,12 +12,12 @@ function Get-CWComputerInfo {
         Write-Warning "Required modules not installed, installing..."
         Install-Module AutomateAPI, PSSharedGoods
     }
-    # try {
-    #     Connect-AutomateAPI -Server $AutomateServer
-    # }
-    # catch {
-    #     Write-Error "Failed to connect to automate server, check credentials..."
-    # }
+    try {
+        Connect-AutomateAPI -Server $AutomateServer
+    }
+    catch {
+        Write-Error "Failed to connect to automate server, check credentials..."
+    }
 
     $Computers = Get-AutomateComputer -ClientName $ClientName | Where-Object { $_.Type -eq "Workstation" }
     
